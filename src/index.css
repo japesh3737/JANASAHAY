@@ -1,0 +1,126 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Noto+Sans+Telugu:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 40 33% 98%;
+    --foreground: 215 40% 13%;
+    --card: 0 0% 100%;
+    --card-foreground: 215 40% 13%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 215 40% 13%;
+    --primary: 215 46% 17%;
+    --primary-foreground: 40 33% 98%;
+    --secondary: 200 22% 94%;
+    --secondary-foreground: 215 40% 13%;
+    --muted: 210 16% 95%;
+    --muted-foreground: 215 13% 43%;
+    --accent: 172 64% 29%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 70% 47%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 215 18% 88%;
+    --input: 215 18% 86%;
+    --ring: 172 64% 29%;
+    --radius: 0.75rem;
+    --font-heading: 'Fraunces', 'Noto Sans Telugu', Georgia, 'Times New Roman', serif;
+    --font-body: 'Plus Jakarta Sans', 'Noto Sans Telugu', ui-sans-serif, system-ui, sans-serif;
+    --font-display: 'Fraunces', 'Noto Sans Telugu', Georgia, 'Times New Roman', serif;
+    --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    --sidebar-background: 40 33% 98%;
+    --sidebar-foreground: 215 40% 13%;
+    --sidebar-primary: 215 46% 17%;
+    --sidebar-primary-foreground: 40 33% 98%;
+    --sidebar-accent: 210 16% 95%;
+    --sidebar-accent-foreground: 215 40% 13%;
+    --sidebar-border: 215 18% 88%;
+    --sidebar-ring: 172 64% 29%;
+  }
+
+  .dark {
+    --background: 215 40% 8%;
+    --foreground: 40 30% 96%;
+    --card: 215 36% 11%;
+    --card-foreground: 40 30% 96%;
+    --popover: 215 36% 11%;
+    --popover-foreground: 40 30% 96%;
+    --primary: 40 30% 96%;
+    --primary-foreground: 215 40% 10%;
+    --secondary: 215 20% 17%;
+    --secondary-foreground: 40 30% 96%;
+    --muted: 215 20% 17%;
+    --muted-foreground: 215 12% 65%;
+    --accent: 172 55% 42%;
+    --accent-foreground: 215 40% 8%;
+    --destructive: 0 62% 45%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 215 18% 20%;
+    --input: 215 18% 22%;
+    --ring: 172 55% 42%;
+    --sidebar-background: 215 36% 11%;
+    --sidebar-foreground: 40 30% 96%;
+    --sidebar-primary: 172 55% 42%;
+    --sidebar-primary-foreground: 215 40% 8%;
+    --sidebar-accent: 215 20% 17%;
+    --sidebar-accent-foreground: 40 30% 96%;
+    --sidebar-border: 215 18% 20%;
+    --sidebar-ring: 172 55% 42%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+  }
+
+  ::selection {
+    background: hsl(var(--accent) / 0.16);
+  }
+}
+
+@layer utilities {
+  .paper-grid {
+    background-image:
+      linear-gradient(to right, hsl(var(--border) / 0.6) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(var(--border) / 0.6) 1px, transparent 1px);
+    background-size: 68px 68px;
+  }
+
+  .paper-grid-light {
+    background-image:
+      linear-gradient(to right, rgba(255, 255, 255, 0.07) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.07) 1px, transparent 1px);
+    background-size: 56px 56px;
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .fade-up {
+    animation: fadeUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

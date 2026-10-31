@@ -1,0 +1,138 @@
+{
+  "name": "Grievance",
+  "type": "object",
+  "properties": {
+    "grievance_id": {
+      "type": "string",
+      "description": "Public tracking code shown to the citizen, e.g. JSA-2026-A1B2C3"
+    },
+    "title": {
+      "type": "string",
+      "description": "One-line subject of the grievance"
+    },
+    "description": {
+      "type": "string",
+      "description": "The citizen's original words"
+    },
+    "category": {
+      "type": "string",
+      "description": "Service area label"
+    },
+    "department": {
+      "type": "string",
+      "description": "Suggested authority that handles the category"
+    },
+    "summary": {
+      "type": "string",
+      "description": "Prepared factual summary of the complaint"
+    },
+    "priority": {
+      "type": "string",
+      "enum": [
+        "Low",
+        "Medium",
+        "High",
+        "Critical"
+      ],
+      "default": "Medium"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "Submitted",
+        "Under Review",
+        "Assigned",
+        "In Progress",
+        "Resolved",
+        "Closed"
+      ],
+      "default": "Submitted"
+    },
+    "location": {
+      "type": "string",
+      "description": "Ward, street or landmark"
+    },
+    "contact_name": {
+      "type": "string"
+    },
+    "contact_phone": {
+      "type": "string"
+    },
+    "contact_email": {
+      "type": "string"
+    },
+    "language": {
+      "type": "string",
+      "enum": [
+        "English",
+        "Telugu"
+      ],
+      "default": "English"
+    },
+    "reasoning": {
+      "type": "string",
+      "description": "Why the assistant chose this category, department and priority"
+    },
+    "attachments": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Private file uris attached by the citizen"
+    },
+    "history": {
+      "type": "array",
+      "description": "Recorded status history, oldest first",
+      "items": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string"
+          },
+          "note": {
+            "type": "string"
+          },
+          "date": {
+            "type": "string"
+          },
+          "by": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "grievance_id",
+    "title",
+    "category",
+    "status"
+  ],
+  "rls": {
+    "create": {
+      "created_by_id": "{{user.id}}"
+    },
+    "read": {
+      "$or": [
+        {
+          "created_by_id": "{{user.id}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}
